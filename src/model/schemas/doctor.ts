@@ -13,16 +13,16 @@ export const Doctor = sequelize.define('doctor', {
         allowNull: false
     },
     medCertId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
     },
     phone: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
     },
     mobilePhone: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
     },
     zipCode: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
     },
     speciality: {
         type: Sequelize.TEXT
