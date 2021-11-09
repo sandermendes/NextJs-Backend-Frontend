@@ -1,9 +1,7 @@
 import React, { FunctionComponent, SyntheticEvent, useState } from "react";
 import {
-    Alert,
     Button, Checkbox, FormControl, FormHelperText, Grid, InputLabel, ListItemText,
-    MenuItem, OutlinedInput, Select, SelectChangeEvent, Snackbar, TextField
-} from "@mui/material";
+    MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField } from "@mui/material";
 import {useRouter} from "next/router";
 import {Message} from "./message";
 
