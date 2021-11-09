@@ -71,9 +71,6 @@ const Speciality: FunctionComponent<SpecialityProps> = ({ specialitySelected, ha
                     return (
                         selected.join(", ")
                     )
-                    // return (
-                    //     selected.map(obj => specialities[obj].name).join(", ")
-                    // )
                 } }
                 // MenuProps={MenuProps}
             >
@@ -161,7 +158,7 @@ export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formT
 
     const onCancelClick = () => {
         if (formType === "edit") {
-            route.push("http://localhost:3000")
+            route.push(`${process.env.MAIN_URL}`)
         }
     }
 
@@ -180,14 +177,6 @@ export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formT
             speciality: value,
         });
     };
-
-    // const handleCloseInfo = (event?: React.SyntheticEvent, reason?: string) => {
-    //     if (reason === 'clickaway') {
-    //         return;
-    //     }
-    //
-    //     setOpenInfo( false );
-    // };
 
     return (
         <React.Fragment>
@@ -274,15 +263,6 @@ export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formT
                 </Grid>
             </form>
             <Message openInfo={ openInfo } setOpenInfo={ setOpenInfo } infoMessage={ infoMessage } />
-            {/*<Snackbar*/}
-            {/*    open={ openInfo }*/}
-            {/*    autoHideDuration={ 6000 }*/}
-            {/*    onClose={ handleCloseInfo }*/}
-            {/*>*/}
-            {/*    <Alert severity={ infoMessage.success ? "success" : "error" } onClose={ handleCloseInfo } sx={{ width: '100%' }}>*/}
-            {/*        { infoMessage.message }*/}
-            {/*    </Alert>*/}
-            {/*</Snackbar>*/}
         </React.Fragment>
     )
 }
