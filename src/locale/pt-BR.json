@@ -1,0 +1,52 @@
+{
+  "General": {
+    "noData": "Sem dados",
+    "noAction": "Nenhuma alteração feita",
+    "internal": "Erro interno",
+    "notAllowed": "Sem permissão",
+    "success": {
+      "added": "Incluido com sucesso",
+      "updated": "Atualizado com sucesso",
+      "deleted": "Excluido com sucesso"
+    },
+    "error": {
+      "added": "Error ao incluir",
+      "updated": "Error ao atualizar",
+      "deleted": "Error ao excluir"
+    }
+  },
+  "Doctor" : {
+    "fields" : {
+      "name": "Nome",
+      "medCertId": "CRM",
+      "phone": "Telefone",
+      "mobilePhone": "Celular",
+      "zipCode": "Cep",
+      "speciality": "Especialidade"
+    },
+    "errors": {
+      "allFields": "Todos campos são necessários",
+      "name": "O campo nome deve conter até 120 caracteres(espaços também contam)",
+      "medCertId": {
+        "numberOnly": "O campo CRM só deve possuir números",
+        "length": "O campo CRM deve possuir até 7 dígitos"
+      },
+      "phone": {
+        "numberOnly": "O campo Telefone só deve possuir números",
+        "length": "O campo Telefone deve possuir 11 dígitos"
+      },
+      "mobilePhone": {
+        "numberOnly": "O campo Celular só deve possuir números",
+        "length": "O campo Celular deve possuir 11 dígitos"
+      },
+      "zipCode": {
+        "numberOnly": "O campo Cep só deve possuir números",
+        "length": "O campo Cep deve possuir 8 dígitos"
+      },
+      "speciality": {
+        "length": "O campo Especialidade precisa de no mínimo 2 selecionadas",
+        "wrongFormat": "O campo Especialidade está com formato incorreto"
+      }
+    }
+  }
+}
