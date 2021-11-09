@@ -57,7 +57,6 @@ const ListField: FunctionComponent<ListFieldProps> = ({ label, data }) => {
 
 const ListFieldChip: FunctionComponent<ListFieldProps> = ({ label, data }) => {
     const chipData = Array.isArray(data) ? data : data.split(',')
-
     return (
         <Grid container direction="column" spacing={1}>
             <Grid item>
@@ -112,9 +111,7 @@ const ModalAdd: FunctionComponent<ModalProps> = ({ open, handleClose, doctors, s
 // @ts-ignore
 const Index: NextPage<Doctors> = ({ getDoctors }) => {
     const [doctors, setDoctors] = useState(getDoctors)
-
     const [open, setOpen] = useState(false)
-
     const [openInfo, setOpenInfo] = useState(false);
     const [infoMessage, setInfoMessage] = useState({});
 
@@ -122,14 +119,16 @@ const Index: NextPage<Doctors> = ({ getDoctors }) => {
     const handleClose = () => setOpen(false)
 
     const deleteItem = async ( doctorDelete: any ) => {
-        const res = await fetch(`${process.env.MAIN_URL}/api/doctor/delete/${doctorDelete.id}`, { method: 'DELETE' })
+        const res = await fetch(
+            `${process.env.MAIN_URL}/api/doctor/delete/${doctorDelete.id}`,
+            { method: 'DELETE' }
+        )
         const result = await res.json()
         if (result.success) {
-            const temp = doctors.filter( (doctor: any) => {
+            const temp = doctors.filter((doctor: any) => {
                 return doctor.id !== doctorDelete.id
-            } )
+            })
             setDoctors( temp )
-
             setOpenInfo(true);
             setInfoMessage( result );
         } else {
@@ -238,7 +237,6 @@ const Index: NextPage<Doctors> = ({ getDoctors }) => {
 Index.getInitialProps = async () => {
     const res = await fetch(`${process.env.MAIN_URL}/api/doctor`)
     const doctors = await res.json()
-
     return {
         getDoctors: Array.isArray(doctors) ? doctors : [],
         revalidate: 10,
