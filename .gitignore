@@ -2,6 +2,9 @@
 #JetBrains IDE Files
 .idea/
 
+#package lock file
+package-lock.json
+
 #SQLite
 data.db
 
