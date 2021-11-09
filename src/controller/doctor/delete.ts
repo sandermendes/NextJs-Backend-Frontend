@@ -1,4 +1,3 @@
-import type { NextApiRequest } from 'next'
 import { persistentDeleteDoctor } from "../../model/doctor/delete"
 
 export const deleteDoctor = async ( id: number ) => {
