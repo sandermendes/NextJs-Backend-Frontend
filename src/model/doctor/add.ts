@@ -1,5 +1,4 @@
 import ptBR from "../../locale/pt-BR.json"
-// import { sequelizeSQLite } from '../../config/db.config'
 import { Doctor } from "../schemas/doctor"
 
 type doctorFields = {
@@ -14,7 +13,6 @@ type doctorFields = {
 export const persistentAddDoctor = async (fields: doctorFields) => {
 
     try {
-        // sequelizeSQLite.
         await Doctor.sync()
         const doctorNew = await Doctor.create({
         // await Doctor.create({
@@ -26,7 +24,7 @@ export const persistentAddDoctor = async (fields: doctorFields) => {
             message: ptBR.General.success.added,
             newData: doctorNew
         }
-    } catch (e) {
+    } catch (error) {
         return{
             success: false,
             message: ptBR.General.error.added
