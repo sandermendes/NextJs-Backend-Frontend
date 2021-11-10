@@ -1,6 +1,8 @@
 import React, { FunctionComponent, SyntheticEvent, useState } from "react";
-import { Button, Checkbox, FormControl, FormHelperText, Grid, InputLabel, ListItemText,
-    MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField } from "@mui/material";
+import {
+    Button, Checkbox, FormControl, FormHelperText, Grid, InputLabel, ListItemText,
+    MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField
+} from "@mui/material";
 import { useRouter } from "next/router";
 import Message from "./message";
 
@@ -33,7 +35,7 @@ const formValueInitial = {
     phone: "",
     mobilePhone: "",
     zipCode: "",
-    speciality: ""
+    speciality: []
 }
 
 type SpecialityData = {
@@ -67,13 +69,11 @@ const Speciality: FunctionComponent<SpecialityProps> = ({ specialitySelected, ha
                 value={ specialitySelected }
                 onChange={ handleChange }
                 input={<OutlinedInput label="Especialidade" />}
-                renderValue={ (selected: string[] ) => {
-                    // console.log('Select - selected', selected)
+                renderValue={ (selected ) => {
                     return (
                         selected.join(", ")
                     )
-                } }
-                // MenuProps={MenuProps}
+                }}
             >
                 {specialities.map((speciality, index) => (
                     <MenuItem key={ index } value={ speciality.name }>
@@ -91,7 +91,6 @@ const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, do
     const route = useRouter();
 
     const [formValue, setFormValue] = useState(formType === "add" ? formValueInitial : doctors);
-    // const [specialitySelected] = useState<string[]>([]);
     const [errors, setErrors] = useState<Errors>({});
 
     const [openInfo, setOpenInfo] = useState(false);
@@ -131,11 +130,7 @@ const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, do
         const result = await res.json();
         if (result.success) {
             if (formType === "add") {
-                // @ts-ignore
-                setDoctors([
-                    { ...doctors },
-                    result.newData
-                ]);
+                setDoctors((oldValue: any) => [ ...oldValue, result.newData ]);
                 setFormValue(formValueInitial);
             }
             setErrors({});
@@ -164,8 +159,7 @@ const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, do
     }
 
     const handleChange = ( event: React.ChangeEvent<HTMLInputElement> ) => {
-        // @ts-ignore
-        const { target } = event;
+        const { target } = event
         setFormValue({
             ...formValue,
             [target.name]: target.value,
@@ -174,10 +168,9 @@ const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, do
 
     const handleSelectChange = async (event: SelectChangeEvent) => {
         const { target: { value } } = event;
-        // @ts-ignore
         setFormValue({
             ...formValue,
-            speciality: value as string,
+            speciality: value as any,
         });
     };
 
