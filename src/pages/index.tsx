@@ -7,8 +7,8 @@ import {
     Modal, Stack, Typography
 } from "@mui/material";
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from "@mui/icons-material";
-import { MaintenanceForm } from "./components/maintenanceForm";
-import {Message} from "./components/message";
+import MaintenanceForm from "../components/maintenanceForm";
+import Message from "../components/message";
 
 type Doctors = {
     id: number,
