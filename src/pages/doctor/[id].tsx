@@ -1,9 +1,9 @@
 import { NextPage } from "next";
 import React, { useState } from 'react';
-import { Main } from "../components/main";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import { MaintenanceForm } from "../components/maintenanceForm";
+import Main from "../../components/main";
+import MaintenanceForm from "../../components/maintenanceForm";
 
 type Doctor = {
     id: number,
