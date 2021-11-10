@@ -7,9 +7,9 @@ type MessageProps = {
     infoMessage: any
 }
 
-export const Message: FunctionComponent<MessageProps> = ({ openInfo, setOpenInfo, infoMessage }) => {
+const Message: FunctionComponent<MessageProps> = ({ openInfo, setOpenInfo, infoMessage }) => {
 
-    const handleCloseInfo = (event?: React.SyntheticEvent, reason?: string) => {
+    const handleCloseInfo = (_event: React.SyntheticEvent, reason?: string) => {
         if (reason === 'clickaway') {
             return;
         }
@@ -29,3 +29,5 @@ export const Message: FunctionComponent<MessageProps> = ({ openInfo, setOpenInfo
         </Snackbar>
     )
 }
+
+export default Message

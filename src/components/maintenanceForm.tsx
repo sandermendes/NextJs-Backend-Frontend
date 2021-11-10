@@ -1,9 +1,8 @@
 import React, { FunctionComponent, SyntheticEvent, useState } from "react";
-import {
-    Button, Checkbox, FormControl, FormHelperText, Grid, InputLabel, ListItemText,
+import { Button, Checkbox, FormControl, FormHelperText, Grid, InputLabel, ListItemText,
     MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField } from "@mui/material";
-import {useRouter} from "next/router";
-import {Message} from "./message";
+import { useRouter } from "next/router";
+import Message from "./message";
 
 type Doctors = {
     id: number,
@@ -34,12 +33,16 @@ const formValueInitial = {
     phone: "",
     mobilePhone: "",
     zipCode: "",
-    speciality: []
+    speciality: ""
 }
 
 type SpecialityData = {
     // id: number;
     name: string;
+}
+
+type Errors = {
+    [key: string]: string
 }
 
 const Speciality: FunctionComponent<SpecialityProps> = ({ specialitySelected, handleChange, error, helperText }) => {
@@ -64,7 +67,7 @@ const Speciality: FunctionComponent<SpecialityProps> = ({ specialitySelected, ha
                 value={ specialitySelected }
                 onChange={ handleChange }
                 input={<OutlinedInput label="Especialidade" />}
-                renderValue={ (selected ) => {
+                renderValue={ (selected: string[] ) => {
                     // console.log('Select - selected', selected)
                     return (
                         selected.join(", ")
@@ -84,12 +87,12 @@ const Speciality: FunctionComponent<SpecialityProps> = ({ specialitySelected, ha
     )
 }
 
-export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, doctors, setDoctors }) => {
+const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, doctors, setDoctors }) => {
     const route = useRouter();
 
     const [formValue, setFormValue] = useState(formType === "add" ? formValueInitial : doctors);
-    const [specialitySelected] = useState<string[]>([]);
-    const [errors, setErrors] = useState({});
+    // const [specialitySelected] = useState<string[]>([]);
+    const [errors, setErrors] = useState<Errors>({});
 
     const [openInfo, setOpenInfo] = useState(false);
     const [infoMessage, setInfoMessage] = useState({});
@@ -130,7 +133,7 @@ export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formT
             if (formType === "add") {
                 // @ts-ignore
                 setDoctors([
-                    ...doctors,
+                    { ...doctors },
                     result.newData
                 ]);
                 setFormValue(formValueInitial);
@@ -139,7 +142,7 @@ export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formT
             setOpenInfo(true);
             setInfoMessage( result );
         } else {
-            let tempErrors = {}
+            let tempErrors: Errors = {};
             result.info.inner.map((validationField: any) => {
                 if (!Object(tempErrors).hasOwnProperty(validationField.path)) {
                     tempErrors = {
@@ -160,19 +163,21 @@ export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formT
         }
     }
 
-    const handleChange = ( event: SyntheticEvent ) => {
-        const { target } = event
+    const handleChange = ( event: React.ChangeEvent<HTMLInputElement> ) => {
+        // @ts-ignore
+        const { target } = event;
         setFormValue({
             ...formValue,
             [target.name]: target.value,
         });
     }
 
-    const handleSelectChange = async (event: SelectChangeEvent<typeof specialitySelected>) => {
+    const handleSelectChange = async (event: SelectChangeEvent) => {
         const { target: { value } } = event;
+        // @ts-ignore
         setFormValue({
             ...formValue,
-            speciality: value,
+            speciality: value as string,
         });
     };
 
@@ -247,7 +252,7 @@ export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formT
                     </Grid>
                     <Grid item md={8} xs={12}>
                         <Speciality
-                            specialitySelected={  formValue.speciality } handleChange={ handleSelectChange }
+                            specialitySelected={  formValue.speciality as string[] } handleChange={ handleSelectChange }
                             error={ Object(errors).hasOwnProperty('speciality') ? (errors.speciality ? true : false) : false }
                             helperText = { Object(errors).hasOwnProperty('speciality') ? ( errors.speciality ? errors.speciality : '' ) : '' }
                         />
@@ -265,3 +270,4 @@ export const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formT
     )
 }
 
+export default MaintenanceForm
