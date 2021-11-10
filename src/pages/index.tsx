@@ -70,7 +70,7 @@ const ListFieldChip: FunctionComponent<ListFieldProps> = ({ label, data }) => {
                 </Typography>
             </Grid>
             <Grid item>
-                <Stack direction="row" spacing={1}>
+                <Stack direction="row" spacing={1} style={{ flexFlow: 'wrap', }} >
                 {chipData.map((item: any, index: number) =>
                     <Chip key={ index } label={ item } variant="outlined" />
                 )}
