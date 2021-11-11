@@ -10,7 +10,6 @@
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "latest",
     "clsx": "latest",
-    "cypress": "^8.7.0",
     "mariadb": "^2.5.5",
     "next": "latest",
     "react": "latest",
@@ -30,6 +29,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "cypress": "^8.7.0"
   }
 }

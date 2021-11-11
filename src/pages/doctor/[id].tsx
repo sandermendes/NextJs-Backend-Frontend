@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import Main from "../../components/main";
 import MaintenanceForm from "../../components/maintenanceForm";
+import { server } from "../../config/config";
 
 type Doctor = {
     id: number,
@@ -44,7 +45,7 @@ const Doctor: NextPage<Doctor> = ({ getDoctor }) => {
 
 // @ts-ignore
 Doctor.getInitialProps = async ({ query }) => {
-    const res = await fetch(`${process.env.MAIN_URL}/api/doctor/${query.id}`)
+    const res = await fetch(`${server}/api/doctor/${query.id}`)
     const doctor = await res.json()
 
     return {

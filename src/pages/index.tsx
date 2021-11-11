@@ -9,6 +9,7 @@ import {
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from "@mui/icons-material";
 import MaintenanceForm from "../components/maintenanceForm";
 import Message from "../components/message";
+import { server } from "../config/config";
 
 type Doctors = {
     id: number,
@@ -235,7 +236,7 @@ const Index: NextPage<Doctors> = ({ getDoctors }) => {
 
 // @ts-ignore
 Index.getInitialProps = async () => {
-    const res = await fetch(`${process.env.MAIN_URL}/api/doctor`)
+    const res = await fetch(`${server}/api/doctor`)
     const doctors = await res.json()
     return {
         getDoctors: Array.isArray(doctors) ? doctors : [],
