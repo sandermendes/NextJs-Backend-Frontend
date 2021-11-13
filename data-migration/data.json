@@ -1,0 +1,123 @@
+[
+  {
+    "name": "Nola Greer",
+    "medCertId": 2653591,
+    "phone": 81815276359,
+    "mobilePhone": 83421214597,
+    "zipCode": 44560440,
+    "speciality": "Cardiologia infantil, Cirurgia cabeça e pescoço",
+    "deleted": false,
+    "createdAt": "2015-04-08T01:07:16",
+    "updatedAt": "2019-02-25T01:44:21"
+  },
+  {
+    "name": "Francine Walters",
+    "medCertId": 5473499,
+    "phone": 20233245136,
+    "mobilePhone": 36535620748,
+    "zipCode": 59375110,
+    "speciality": "Cardiologia infantil, Cirurgia cabeça e pescoço",
+    "deleted": false,
+    "createdAt": "2015-09-20T06:57:38",
+    "updatedAt": "2016-02-15T09:35:32"
+  },
+  {
+    "name": "Christian Goff",
+    "medCertId": 1427559,
+    "phone": 12212778845,
+    "mobilePhone": 71028673535,
+    "zipCode": 96322920,
+    "speciality": "Cardiologia infantil, Cirurgia cabeça e pescoço",
+    "deleted": false,
+    "createdAt": "2019-02-08T10:32:35",
+    "updatedAt": "2019-12-19T06:31:00"
+  },
+  {
+    "name": "Meghan Trevino",
+    "medCertId": 7772159,
+    "phone": 77923631485,
+    "mobilePhone": 14628699360,
+    "zipCode": 47039757,
+    "speciality": "Alergologia, Angiologia",
+    "deleted": false,
+    "createdAt": "2019-06-03T08:58:04",
+    "updatedAt": "2019-09-03T01:15:33"
+  },
+  {
+    "name": "Jolene Garrett",
+    "medCertId": 6757107,
+    "phone": 63833719426,
+    "mobilePhone": 87945304075,
+    "zipCode": 49998090,
+    "speciality": "Alergologia, Angiologia",
+    "deleted": false,
+    "createdAt": "2021-03-13T07:10:33",
+    "updatedAt": "2019-11-03T06:35:05"
+  },
+  {
+    "name": "Barrera Morrow",
+    "medCertId": 6926879,
+    "phone": 58814969168,
+    "mobilePhone": 57423114525,
+    "zipCode": 85140624,
+    "speciality": "Cardiologia infantil, Cirurgia cabeça e pescoço",
+    "deleted": false,
+    "createdAt": "2014-03-16T09:27:30",
+    "updatedAt": "2021-06-30T02:29:34"
+  },
+  {
+    "name": "Johns Boyd",
+    "medCertId": 9114101,
+    "phone": 37884612489,
+    "mobilePhone": 62609172007,
+    "zipCode": 26792054,
+    "speciality": "Cardiologia infantil, Cirurgia cabeça e pescoço",
+    "deleted": false,
+    "createdAt": "2014-05-16T05:16:15",
+    "updatedAt": "2019-07-31T12:42:03"
+  },
+  {
+    "name": "Lloyd Hendricks",
+    "medCertId": 2983797,
+    "phone": 79804888396,
+    "mobilePhone": 12500000940,
+    "zipCode": 64484702,
+    "speciality": "Alergologia, Angiologia",
+    "deleted": false,
+    "createdAt": "2020-07-27T04:52:34",
+    "updatedAt": "2021-01-13T10:39:29"
+  },
+  {
+    "name": "Reyes Harrison",
+    "medCertId": 7098215,
+    "phone": 14264713908,
+    "mobilePhone": 73108709648,
+    "zipCode": 34048417,
+    "speciality": "Alergologia, Angiologia",
+    "deleted": false,
+    "createdAt": "2014-06-15T12:34:13",
+    "updatedAt": "2014-08-28T10:43:43"
+  },
+  {
+    "name": "Cecilia Callahan",
+    "medCertId": 3379289,
+    "phone": 65780361231,
+    "mobilePhone": 28003922089,
+    "zipCode": 41920218,
+    "speciality": "Cardiologia infantil, Cirurgia cabeça e pescoço",
+    "deleted": false,
+    "createdAt": "2014-06-26T10:00:45",
+    "updatedAt": "2015-06-08T09:04:59"
+  },
+  {
+    "name": "Eugenia Clements",
+    "medCertId": 4023987,
+    "phone": 66505503998,
+    "mobilePhone": 50475076076,
+    "zipCode": 92897448,
+    "speciality": "Cardiologia infantil, Cirurgia cabeça e pescoço",
+    "deleted": false,
+    "createdAt": "2015-03-05T05:48:33",
+    "updatedAt": "2019-12-08T08:56:49"
+  }
+]
