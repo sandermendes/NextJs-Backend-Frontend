@@ -15,7 +15,6 @@ export const persistentAddDoctor = async (fields: doctorFields) => {
     try {
         await Doctor.sync()
         const doctorNew = await Doctor.create({
-        // await Doctor.create({
             ...fields,
             speciality: fields.speciality.toString()
         })

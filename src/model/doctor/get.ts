@@ -4,8 +4,6 @@ import { Doctor } from "../schemas/doctor"
 export const persistentGetDoctors = async () => {
 
     try {
-        // return await Doctor.findAll()
-        // return await Doctor.findAll({
         const doctorAll = await Doctor.findAll({
             where: {
                 deleted: false
@@ -20,10 +18,6 @@ export const persistentGetDoctors = async () => {
             })
         }
         return doctorAll
-        // return {
-        //     success: true,
-        //     message: ptBR.General.noData
-        // }
     } catch (e) {
         return{
             success: false,
@@ -36,7 +30,6 @@ export const persistentGetDoctors = async () => {
 export const persistentGetDoctor = async (id: number | string[]) => {
 
     try {
-        // return await Doctor.findOne({
         const doctorOne = await Doctor.findOne({
             where: {
                 id: id,
@@ -47,10 +40,6 @@ export const persistentGetDoctor = async (id: number | string[]) => {
             return doctorOne
         }
         return {}
-        // return {
-        //     success: true,
-        //     message: ptBR.General.noData
-        // }
     } catch (e) {
         return {
             success: false,
