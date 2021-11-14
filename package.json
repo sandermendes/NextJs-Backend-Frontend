@@ -29,7 +29,8 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "typescript": "latest",
-    "cypress": "^8.7.0"
+    "cypress": "^8.7.0",
+    "sequelize-cli": "^6.3.0",
+    "typescript": "latest"
   }
 }
