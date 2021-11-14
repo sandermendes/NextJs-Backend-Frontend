@@ -19,7 +19,7 @@ export const validate = ( schema: OptionalObjectSchema<ObjectShape>, handler: Ne
             } catch (error) {
                 const returnMessage = {
                     success: false,
-                    message: ptBR.General.error.updated,
+                    message: (request.method === 'PUT') ? ptBR.General.error.updated : ptBR.General.error.added,
                     info: error
                 }
                 return response.status(200).json( returnMessage )
