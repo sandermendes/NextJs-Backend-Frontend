@@ -69,8 +69,20 @@ Este projeto possui configuração para execução do Sequelize Migrations e See
 ## Documentação
 
 ### Endpoints
+##### Resumo
 
-API documentada utilizando a ferramenta Postman, que pode ser acessada através do link a seguir:
+* {url}/api/doctor - **Retorna todos registros**
+
+* {url}/api/doctor/[id] - **Retorna um registro conforme o código**
+
+* {url}/api/doctor/add - **Adiciona um registro**
+
+* {url}/api/doctor/edit/[id] - **Atualiza um registro conforme o código**
+
+* {url}/api/doctor/delete/[id] - **Exclui um registro conforme o código**
+
+***Mais detalhes*** sobre os endpoints, podem ser localizados com o link a seguir do Postman,
+foi documentada utilizando a ferramenta:
 
 [![Open Documentation on Postman](https://raw.githubusercontent.com/sandermendes/app-test/a1823009dc6d2cf8f417c8e578744dcf2068b866/assets/postman-doc-button.svg)](https://www.postman.com/sandercmendes/workspace/sander-workspace/documentation/18173115-24025273-6481-48fd-a015-8d6e40ab97a5)
 
