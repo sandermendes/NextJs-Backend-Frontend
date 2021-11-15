@@ -41,7 +41,7 @@ MAIN_URL=http://$HOSTNAME:$PORT
 DB_HOST=127.0.0.1
 DB_PORT=3306
 # DB_DIALECT=sqlite
- DB_DIALECT=mariadb
+DB_DIALECT=mariadb
 # SQLite file path
 DB_PATH_STORAGE=./src/data/data.db
 DB_DATABASE=<Banco de dados>
