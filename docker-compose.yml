@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+  nextjs:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+    - 3000:3000
+    env_file: .env
+    environment:
+      - MAIN_URL=http://localhost:3000
+      - DB_HOST=db-mysql
+      - DB_PORT=3306
+      - DB_DIALECT=mariadb
+      - DB_DATABASE=NextJsTest
+      - DB_USER=root
+      - DB_PASSWORD=123456
+    depends_on:
+      - db-mysql
+    networks:
+      - app-connect
+
+  db-mysql:
+    image: mysql:5.6
+    environment:
+      - MYSQL_DATABASE=NextJsTest
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+    - 3306:3306
+    volumes:
+    - db-mysql-data:/data
+
+volumes:
+  db-mysql-data:
+
+networks:
+  app-connect:
+    driver: bridge
