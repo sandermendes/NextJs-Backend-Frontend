@@ -69,7 +69,7 @@ Este projeto possui configuração para execução do Sequelize Migrations e See
 ## Documentação
 
 ### Endpoints
-##### Resumo
+##### Resumo básico
 
 * {url}/api/doctor - **Retorna todos registros**
 
