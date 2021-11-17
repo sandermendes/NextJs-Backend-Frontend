@@ -1,6 +1,7 @@
 {
   "General": {
     "noData": "Sem dados",
+    "errorParam": "Parametros incorretos",
     "noAction": "Nenhuma alteração feita",
     "internal": "Erro interno",
     "notAllowed": "Sem permissão",

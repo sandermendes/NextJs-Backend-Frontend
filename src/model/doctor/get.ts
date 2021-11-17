@@ -1,11 +1,12 @@
 import ptBR from "../../locale/pt-BR.json"
 import { Doctor } from "../schemas/doctor"
 
-export const persistentGetDoctors = async () => {
+export const persistentGetDoctors = async ( search: any = {} ) => {
 
     try {
         const doctorAll = await Doctor.findAll({
             where: {
+                ...search,
                 deleted: false
             }
         })
