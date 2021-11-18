@@ -18,9 +18,19 @@ export default async function handler (
     if (['GET'].includes( <string>request.method )) {
         if (Object(request.query).hasOwnProperty('zip')) {
             const zipCode: string = request.query.zip.toString()
-            response.status(200).json(
-                await getZipCode( <string>zipCode )
-            )
+
+            const result = await getZipCode( <string>zipCode )
+            if (!Object(result).hasOwnProperty('erro')) {
+                response.status(200).json(
+                    await getZipCode( <string>zipCode )
+                )
+            } else {
+                response.status(200).json({
+                    success: false,
+                    message: ptBR.General.noData
+                })
+            }
+
         }
     } else {
         response.status(200).json({
