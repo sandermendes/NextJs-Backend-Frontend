@@ -17,11 +17,10 @@ export default async function handler (
 ){
     if (['GET'].includes( <string>request.method )) {
         if (Object(request.query).hasOwnProperty('zip')) {
-
+            const zipCode: string = request.query.zip.toString()
             response.status(200).json(
-                await getZipCode('14407050')
+                await getZipCode( <string>zipCode )
             )
-
         }
     } else {
         response.status(200).json({
