@@ -75,6 +75,8 @@ Este projeto possui configuração para execução do Sequelize Migrations e See
 
 * {url}/api/doctor/[id] - **Retorna um registro conforme o código**
 
+* {url}/api/doctor/search?nomeCampo=valor - **Busca pelo nome do campo e retorna, se houver vários registros**
+
 * {url}/api/doctor/add - **Adiciona um registro**
 
 * {url}/api/doctor/edit/[id] - **Atualiza um registro conforme o código**
