@@ -4,6 +4,11 @@ export type PayloadDoctor = {
     phone: number,
     mobilePhone: number,
     zipCode: number,
+    address: string,
+    number: string,
+    neighborhood: string,
+    city: string,
+    stateProvince: string,
     speciality: string[]
 }
 
@@ -14,6 +19,11 @@ export type ResponseDoctors = {
     phone: number,
     mobilePhone: number,
     zipCode: number,
+    address: string,
+    number: string,
+    neighborhood: string,
+    city: string,
+    stateProvince: string,
     speciality: string[]
 }[]
 
@@ -24,5 +34,10 @@ export type ResponseDoctor = {
     phone: number,
     mobilePhone: number,
     zipCode: number,
+    address: string,
+    number: string,
+    neighborhood: string,
+    city: string,
+    stateProvince: string,
     speciality: string[]
 }

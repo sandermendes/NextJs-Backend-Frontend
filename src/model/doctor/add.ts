@@ -7,6 +7,11 @@ type doctorFields = {
     phone: number
     mobilePhone: number
     zipCode: number
+    address: string
+    number: string
+    neighborhood: string
+    city: string
+    stateProvince: string
     speciality: string[]
 }
 

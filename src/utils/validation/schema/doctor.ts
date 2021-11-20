@@ -48,6 +48,21 @@ export const doctorSchema = object({
         )
         .min(8, ERROR_ZIPCODE_LENGTH)
         .max(8, ERROR_ZIPCODE_LENGTH),
+    address: string().required(
+        ERROR_ALLFIELDS
+    ),
+    number: string().required(
+        ERROR_ALLFIELDS
+    ),
+    neighborhood: string().required(
+        ERROR_ALLFIELDS
+    ),
+    city: string().required(
+        ERROR_ALLFIELDS
+    ),
+    stateProvince: string().required(
+        ERROR_ALLFIELDS
+    ),
     speciality: array().required(
             ERROR_ALLFIELDS
         ).min(2, ERROR_SPECIALITY_LENGTH).of(

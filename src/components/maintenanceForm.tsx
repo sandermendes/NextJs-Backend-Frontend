@@ -1,6 +1,6 @@
 import React, { FunctionComponent, SyntheticEvent, useState } from "react";
 import {
-    Button, Checkbox, FormControl, FormHelperText, Grid, InputLabel, ListItemText,
+    Button, Checkbox, FormControl, FormHelperText, Grid, InputLabel, LinearProgress, ListItemText,
     MenuItem, OutlinedInput, Select, SelectChangeEvent, TextField
 } from "@mui/material";
 import { useRouter } from "next/router";
@@ -13,6 +13,11 @@ type Doctors = {
     phone: number,
     mobilePhone: number,
     zipCode: number,
+    address: string,
+    number: string,
+    neighborhood: string,
+    city: string,
+    stateProvince: string,
     speciality: string[]
 }
 
@@ -35,6 +40,11 @@ const formValueInitial = {
     phone: "",
     mobilePhone: "",
     zipCode: "",
+    address: "",
+    number: "",
+    neighborhood: "",
+    city: "",
+    stateProvince: "",
     speciality: []
 }
 
@@ -90,6 +100,9 @@ const Speciality: FunctionComponent<SpecialityProps> = ({ specialitySelected, ha
 const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, doctors, setDoctors }) => {
     const route = useRouter();
 
+    const [zipCode, setZipCode] = useState("");
+    const [zipCodeLoading, setZipCodeLoading] = useState(false);
+
     const [formValue, setFormValue] = useState(formType === "add" ? formValueInitial : doctors);
     const [errors, setErrors] = useState<Errors>({});
 
@@ -132,6 +145,7 @@ const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, do
             if (formType === "add") {
                 setDoctors((oldValue: any) => [ ...oldValue, result.newData ]);
                 setFormValue(formValueInitial);
+                setZipCode("")
             }
             setErrors({});
             setOpenInfo(true);
@@ -164,6 +178,43 @@ const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, do
             ...formValue,
             [target.name]: target.value,
         });
+    }
+
+    const handleChangeZipCode = async ( event: React.ChangeEvent<HTMLInputElement> ) => {
+        const { target } = event
+        setZipCode( target.value );
+        setErrors({});
+        if ( formValue.address ) {
+            setFormValue({
+                ...formValue,
+                address: "",
+                neighborhood: "",
+                city: "",
+                stateProvince: "",
+            })
+        }
+        if (target.value.length === 8) {
+            setZipCodeLoading(true)
+            const result = await fetch(`api/services/address/${target.value}`);
+            const resultZipCode = await result.json();
+            if (Object(resultZipCode).hasOwnProperty('logradouro')) {
+                // @ts-ignore
+                setFormValue({
+                    ...formValue,
+                    zipCode: target.value,
+                    address: resultZipCode.logradouro,
+                    neighborhood: resultZipCode.bairro,
+                    city: resultZipCode.localidade,
+                    stateProvince: resultZipCode.uf,
+                })
+                setZipCodeLoading( false )
+            } else if (Object(resultZipCode).hasOwnProperty('message')) {
+                setErrors({
+                    zipCode: "Não achei"
+                })
+                setZipCodeLoading( false )
+            }
+        }
     }
 
     const handleSelectChange = async (event: SelectChangeEvent) => {
@@ -230,24 +281,81 @@ const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, do
                             helperText = { Object(errors).hasOwnProperty('mobilePhone') ? ( errors.mobilePhone ? errors.mobilePhone : '' ) : '' }
                         />
                     </Grid>
-                    <Grid item md={4} xs={12}>
+                    <Grid item xs={12}>
+                        <Speciality
+                            specialitySelected={  formValue.speciality as string[] } handleChange={ handleSelectChange }
+                            error={ Object(errors).hasOwnProperty('speciality') ? (errors.speciality ? true : false) : false }
+                            helperText = { Object(errors).hasOwnProperty('speciality') ? ( errors.speciality ? errors.speciality : '' ) : '' }
+                        />
+                    </Grid>
+                    <Grid item md={3} xs={12} style={{height: 72}}>
                         <TextField
                             id="zipCode"
                             label="CEP"
                             name="zipCode"
-                            value={ formValue.zipCode }
-                            onChange={ handleChange }
+                            value={ zipCode }
+                            onChange={ handleChangeZipCode }
                             fullWidth
                             inputProps={{ maxLength: 8 }}
                             error={ Object(errors).hasOwnProperty('zipCode') ? (errors.zipCode ? true : false) : false }
                             helperText = { Object(errors).hasOwnProperty('zipCode') ? ( errors.zipCode ? errors.zipCode : '' ) : '' }
                         />
+                        {zipCodeLoading && <LinearProgress style={{
+                            position: 'relative',
+                            bottom: '5px',
+                            borderBottomLeftRadius: '3px',
+                            borderBottomRightRadius: '3px',
+                            margin: '0px 1.4px',
+                        }}/>}
                     </Grid>
-                    <Grid item md={8} xs={12}>
-                        <Speciality
-                            specialitySelected={  formValue.speciality as string[] } handleChange={ handleSelectChange }
-                            error={ Object(errors).hasOwnProperty('speciality') ? (errors.speciality ? true : false) : false }
-                            helperText = { Object(errors).hasOwnProperty('speciality') ? ( errors.speciality ? errors.speciality : '' ) : '' }
+                    <Grid item md={6} xs={12}>
+                        <TextField
+                            id="address"
+                            label="Endereço"
+                            name="address"
+                            value={ formValue.address }
+                            onChange={ handleChange }
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid item md={3} xs={12}>
+                        <TextField
+                            id="number"
+                            label="Número"
+                            name="number"
+                            value={ formValue.number }
+                            onChange={ handleChange }
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <TextField
+                            id="neighborhood"
+                            label="Bairro"
+                            name="neighborhood"
+                            value={ formValue.neighborhood }
+                            onChange={ handleChange }
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <TextField
+                            id="city"
+                            label="Cidade"
+                            name="city"
+                            value={ formValue.city }
+                            onChange={ handleChange }
+                            fullWidth
+                        />
+                    </Grid>
+                    <Grid item md={4} xs={12}>
+                        <TextField
+                            id="stateProvince"
+                            label="Estado"
+                            name="stateProvince"
+                            value={ formValue.stateProvince }
+                            onChange={ handleChange }
+                            fullWidth
                         />
                     </Grid>
                     <Grid item md={12} xs={12}>

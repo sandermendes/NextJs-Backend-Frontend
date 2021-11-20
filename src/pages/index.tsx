@@ -2,10 +2,8 @@ import React, { useState, FunctionComponent } from 'react';
 import { NextPage } from "next";
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import {
-    Avatar, Card, CardContent, CardHeader, Chip, Divider, Fab, Grid, IconButton, List, ListItem, ListItemAvatar,
-    Modal, Stack, Typography
-} from "@mui/material";
+import { Avatar, Card, CardContent, CardHeader, Chip, Divider, Fab, Grid,
+    IconButton, List, ListItem, ListItemAvatar, Modal, Stack, Typography } from "@mui/material";
 import { Add as AddIcon, Delete as DeleteIcon, Edit as EditIcon } from "@mui/icons-material";
 import MaintenanceForm from "../components/maintenanceForm";
 import Message from "../components/message";
@@ -18,6 +16,11 @@ type Doctors = {
     phone: number,
     mobilePhone: number,
     zipCode: number,
+    address: string,
+    number: string,
+    neighborhood: string,
+    city: string,
+    stateProvince: string,
     speciality: string[]
 }
 
@@ -31,9 +34,10 @@ type ModalProps = {
 type ListFieldProps = {
     label: string
     data: any
+    breakLine?: boolean
 }
 
-const ListField: FunctionComponent<ListFieldProps> = ({ label, data }) => {
+const ListField: FunctionComponent<ListFieldProps> = ({ label, data, breakLine= false }) => {
     return (
         <Grid container direction="column">
             <Typography
@@ -49,6 +53,7 @@ const ListField: FunctionComponent<ListFieldProps> = ({ label, data }) => {
                 component="span"
                 variant="body2"
                 color="text.secondary"
+                style={ breakLine ? { whiteSpace: 'pre-line', lineHeight: 0.7 } : {} }
             >
                 { data }
             </Typography>
@@ -96,7 +101,6 @@ const ModalAdd: FunctionComponent<ModalProps> = ({ open, handleClose, doctors, s
                 transform: 'translate(-50%, -50%)',
                 width: 600,
                 bgcolor: 'background.paper',
-                // border: '2px solid #000',
                 boxShadow: 24,
                 p: 4,
             }}>
@@ -150,7 +154,6 @@ const Index: NextPage<Doctors> = ({ getDoctors }) => {
                     <CardHeader title="Médicos" />
                     <CardContent>
                         { (Array.isArray(doctors) && !doctors.length) && <div>Sem dados</div> }
-                        {/*{ !Array.isArray(doctors) && <div>Sem dados</div> }*/}
                         {Array.isArray(doctors) && doctors &&
                         <List>
                             {doctors.map((doctor: Doctors, index: number) =>
@@ -196,19 +199,29 @@ const Index: NextPage<Doctors> = ({ getDoctors }) => {
                                             </Grid>
                                             <Grid item xs={12}>
                                                 <Grid container direction="row" spacing={3}>
-                                                <Grid item >
-                                                    <ListField label="CRM" data={ doctor.medCertId } />
-                                                </Grid>
-                                                <Grid item >
-                                                    <ListField label="Telefone" data={ doctor.phone } />
-                                                </Grid>
-                                                <Grid item >
-                                                    <ListField label="Celular" data={ doctor.mobilePhone } />
-                                                </Grid>
-                                                <Grid item >
-                                                    <ListField label="CEP" data={ doctor.zipCode } />
+                                                    <Grid item >
+                                                        <ListField label="CRM" data={ doctor.medCertId } />
+                                                    </Grid>
+                                                    <Grid item >
+                                                        <ListField label="Telefone" data={ doctor.phone } />
+                                                    </Grid>
+                                                    <Grid item >
+                                                        <ListField label="Celular" data={ doctor.mobilePhone } />
+                                                    </Grid>
+                                                    <Grid item >
+                                                        <ListField label="CEP" data={ doctor.zipCode } />
+                                                    </Grid>
                                                 </Grid>
                                             </Grid>
+                                            <Grid item xs={12}>
+                                                <Grid container direction="row" spacing={3}>
+                                                    <Grid item >
+                                                        <ListField label="Endereço" data={`
+                                                            ${doctor.address} ${doctor.number}\n
+                                                            ${doctor.neighborhood} - ${doctor.city} - ${doctor.stateProvince}
+                                                        `} breakLine />
+                                                    </Grid>
+                                                </Grid>
                                             </Grid>
                                             <Grid item xs={12}>
                                                 <ListFieldChip label="Especialidade" data={ doctor.speciality } />
