@@ -1,4 +1,6 @@
 'use strict';
+import Sequelize from "sequelize";
+
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class doctor extends Model {
@@ -17,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     phone: DataTypes.STRING,
     mobilePhone: DataTypes.STRING,
     zipCode: DataTypes.STRING,
+    address: DataTypes.STRING,
+    number: DataTypes.STRING,
+    neighborhood: DataTypes.STRING,
+    city: DataTypes.STRING,
+    stateProvince: DataTypes.STRING,
     speciality: DataTypes.TEXT,
     deleted: DataTypes.BOOLEAN
   }, {

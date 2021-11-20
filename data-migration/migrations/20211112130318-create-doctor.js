@@ -1,4 +1,6 @@
 'use strict';
+import Sequelize from "sequelize";
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('doctor', {
@@ -21,6 +23,21 @@ module.exports = {
         type: Sequelize.STRING
       },
       zipCode: {
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      number: {
+        type: Sequelize.STRING
+      },
+      neighborhood: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      stateProvince: {
         type: Sequelize.STRING
       },
       speciality: {
