@@ -3,7 +3,7 @@ const path = require('path')
 const CUSTOM_PATH = 'data-migration'
 
 module.exports = {
-    'config': path.resolve(CUSTOM_PATH, 'config/config.json'),
+    'config': path.resolve(CUSTOM_PATH, 'config/config.js'),
     'models-path': path.resolve(CUSTOM_PATH, 'models'),
     'seeders-path': path.resolve(CUSTOM_PATH, 'seeders'),
     'migrations-path': path.resolve(CUSTOM_PATH, 'migrations')
