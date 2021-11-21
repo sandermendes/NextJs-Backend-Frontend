@@ -1,6 +1,4 @@
 'use strict';
-import Sequelize from "sequelize";
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('doctor', {

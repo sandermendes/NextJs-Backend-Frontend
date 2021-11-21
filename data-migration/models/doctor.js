@@ -1,6 +1,4 @@
 'use strict';
-import Sequelize from "sequelize";
-
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class doctor extends Model {
