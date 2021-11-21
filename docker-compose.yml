@@ -30,6 +30,8 @@ services:
     - 3306:3306
     volumes:
     - db-mysql-data:/data
+    networks:
+      - app-connect
 
 volumes:
   db-mysql-data:
