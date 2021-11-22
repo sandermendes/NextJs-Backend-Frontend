@@ -195,7 +195,7 @@ const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, do
         }
         if (target.value.length === 8) {
             setZipCodeLoading(true)
-            const result = await fetch(`api/services/address/${target.value}`);
+            const result = await fetch(`${process.env.MAIN_URL}/api/services/address/${target.value}`);
             const resultZipCode = await result.json();
             if (Object(resultZipCode).hasOwnProperty('logradouro')) {
                 // @ts-ignore
