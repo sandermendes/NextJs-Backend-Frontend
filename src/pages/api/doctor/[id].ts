@@ -8,6 +8,9 @@ import { ResponseDoctor } from "../../../types/doctor"
 const doctorHandler = async ( request: NextApiRequest, response: NextApiResponse<ResponseDoctor | ResponseMessage> ) => {
     // @ts-ignore
     if (['GET'].includes( request.method )) {
+        /**
+         * Search condition, with multiples fields
+         */
         if (request.query.id === 'search') {
             let fields: any = null
             Object.keys(request.query).map((params: any) => {
@@ -30,6 +33,9 @@ const doctorHandler = async ( request: NextApiRequest, response: NextApiResponse
             }
 
         } else {
+            /**
+             * Simple search
+             */
             response.status(200).json(
                 await getDoctor(request)
             )
