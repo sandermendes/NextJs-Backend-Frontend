@@ -100,11 +100,11 @@ const Speciality: FunctionComponent<SpecialityProps> = ({ specialitySelected, ha
 const MaintenanceForm: FunctionComponent<MaintenanceFormProps> = ({ formType, doctors, setDoctors }) => {
     const route = useRouter();
 
-    const [zipCode, setZipCode] = useState("");
-    const [zipCodeLoading, setZipCodeLoading] = useState(false);
-
     const [formValue, setFormValue] = useState(formType === "add" ? formValueInitial : doctors);
     const [errors, setErrors] = useState<Errors>({});
+
+    const [zipCode, setZipCode] = useState(formType === "add" ? "" : formValue.zipCode);
+    const [zipCodeLoading, setZipCodeLoading] = useState(false);
 
     const [openInfo, setOpenInfo] = useState(false);
     const [infoMessage, setInfoMessage] = useState({});
