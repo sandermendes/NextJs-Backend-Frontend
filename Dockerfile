@@ -30,6 +30,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY data-migration ./data-migration
 COPY .sequelizerc ./.sequelizerc
+COPY init_data.sh ./init_data.sh
 
 USER nextjs
 
