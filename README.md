@@ -18,20 +18,34 @@ Simples interface para interagir com a API, utilizando:
 ##### Imagem de exemplo do Front-end
 ![Sander Mendes App Doctor's Management](https://raw.githubusercontent.com/sandermendes/app-test/master/assets/main-screen-demo.png)
 
-
-
-
 ## Como usar
 
-### Instalação via Docker
-
-Faça o download [ou clone o repo](https://github.com/sandermendes/app-test):
+Faça o [download](https://github.com/sandermendes/app-test/archive/refs/heads/master.zip) ou clone o repo:
 
 ```sh
 git clone https://github.com/sandermendes/app-test
 ```
 
 Acesse a pasta em questão
+
+### Instalação via Docker Compose
+
+Utilizando o Docker Compose:
+
+```sh
+docker-compose up
+```
+
+Ao finalizar a criação e o inicio da mesma, execute o arquivo `ini_data.sh`, para a criação do banco de dados, tabela e inserção de alguns dados de exemplo:
+
+```sh
+docker exec -i app-test_nextjs_1 /bin/sh init_data.sh
+```
+
+Nota: Onde presume-se que `app-test_nextjs_1` é o nome do container que hospeda o NextJS. 
+
+### Instalação via Docker
+Nota: (Dockerfile) Instalação somente se desejar configurar Base de Dados MySQL hospedada em outro lugar 
 
 Configure o arquivo de ambiente:
 ```sh
@@ -82,6 +96,8 @@ Este projeto possui configuração para execução do Sequelize Migrations e See
 * {url}/api/doctor/edit/[id] - **Atualiza um registro conforme o código**
 
 * {url}/api/doctor/delete/[id] - **Exclui um registro conforme o código**
+
+* {url}/api/services/address/[zipcode] - **Busca o CEP pelo código do mesmo**
 
 ***Mais detalhes*** sobre os endpoints, podem ser localizados com o link a seguir do Postman,
 foi documentada utilizando a ferramenta:
