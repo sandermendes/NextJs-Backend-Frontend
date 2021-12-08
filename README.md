@@ -1,53 +1,53 @@
-# Cadastro de Médicos
+# Doctors Management
 
-## Linguagem utilizada
+## Language used
 
 ### Back-End
 
 * ###### Next JS
-* ###### TypeScript 
-* ###### Sequelize 
-* ###### Migrations e Seeds 
+* ###### TypeScript
+* ###### Sequelize
+* ###### Migrations and Seeds
 
-### Front-End
+### Front End
 
-Simples interface para interagir com a API, utilizando:
+Simple interface to interact with the API, using:
 * ###### React
 * ###### Material-UI
 
-##### Imagem de exemplo do Front-end
+##### Front-end example image
 ![Sander Mendes App Doctor's Management](https://raw.githubusercontent.com/sandermendes/app-test/master/assets/main-screen-demo.png)
 
-## Como usar
+## How to use
 
-Faça o [download](https://github.com/sandermendes/app-test/archive/refs/heads/master.zip) ou clone o repo:
+[Download](https://github.com/sandermendes/app-test/archive/refs/heads/master.zip) or clone the repo:
 
 ```sh
-git clone https://github.com/sandermendes/app-test
+git clone https://github.com/sandermendes/app-test.git
 ```
 
-Acesse a pasta em questão
+Access the folder in question
 
-### Instalação via Docker Compose
+### Installation via Docker Compose
 
-Utilizando o Docker Compose:
+Using Docker Compose:
 
 ```sh
 docker-compose up
 ```
 
-Ao finalizar a criação e o inicio da mesma, execute o arquivo `ini_data.sh`, para a criação do banco de dados, tabela e inserção de alguns dados de exemplo:
+When you finish the creation and start of it, run the `ini_data.sh` file, to create the database, table and insert some example data:
 
 ```sh
 docker exec -i app-test_nextjs_1 /bin/sh init_data.sh
 ```
 
-Nota: Onde presume-se que `app-test_nextjs_1` é o nome do container que hospeda o NextJS. 
+Note: Where `app-test_nextjs_1` is assumed to be the name of the container hosting NextJS.
 
-### Instalação via Docker
-Nota: (Dockerfile) Instalação somente se desejar configurar Base de Dados MySQL hospedada em outro lugar 
+### Installation via Docker
+Note: (Dockerfile) Installation only if you want to configure MySQL Database hosted elsewhere
 
-Configure o arquivo de ambiente:
+Configure the environment file:
 ```sh
 HOSTNAME=localhost
 PORT=3000
@@ -58,53 +58,52 @@ DB_PORT=3306
 DB_DIALECT=mariadb
 # SQLite file path
 DB_PATH_STORAGE=./src/data/data.db
-DB_DATABASE=<Banco de dados>
-DB_USER=<Usuário do banco>
-DB_PASSWORD=<Senha do usuário>
+DB_DATABASE=<Database>
+DB_USER=<Bank User>
+DB_PASSWORD=<User Password>
 ```
 
-Nota: `O projeto foi preparado para o uso em SQLite ou MySQL`
+Note: `The project was prepared for use in SQLite or MySQL`
 
-Criar a imagem Docker:
+Create the Docker Image:
 ```sh
 docker build -t app-test .
 ```
 
-Iniciar o container:
+Start the container:
 
 ```sh
 docker run --env-file ./.env -p 3000:3000 app-test
 ```
 
-### Migrations e Seeds
+### Migrations and Seeds
 
-Este projeto possui configuração para execução do Sequelize Migrations e Seeds, que se localiza na raiz do projeto, na pasta: `data-migration`
+This project has a configuration for running Sequelize Migrations and Seeds, which is located at the root of the project, in the folder: `data-migration`
 
-## Documentação
+## Documentation
 
 ### Endpoints
-##### Resumo básico
+##### Basic summary
 
-* {url}/api/doctor - **Retorna todos registros**
+* {url}/api/doctor - **Returns all records**
 
-* {url}/api/doctor/[id] - **Retorna um registro conforme o código**
+* {url}/api/doctor/[id] - **Return a record by id**
 
-* {url}/api/doctor/search?nomeCampo=valor - **Busca pelo nome do campo**
+* {url}/api/doctor/search?FieldName=value - **Search by field name**
 
-* {url}/api/doctor/add - **Adiciona um registro**
+* {url}/api/doctor/add - **Add a record**
 
-* {url}/api/doctor/edit/[id] - **Atualiza um registro conforme o código**
+* {url}/api/doctor/edit/[id] - **Updates a record by id**
 
-* {url}/api/doctor/delete/[id] - **Exclui um registro conforme o código**
+* {url}/api/doctor/delete/[id] - **Deletes a record by id**
 
-* {url}/api/services/address/[zipcode] - **Busca o CEP pelo código do mesmo**
+* {url}/api/services/address/[zipcode] - **Search the zip code by its code**
 
-***Mais detalhes*** sobre os endpoints, podem ser localizados com o link a seguir do Postman,
-foi documentada utilizando a ferramenta:
+***More details*** about endpoints can be found with the following link from Postman,
+has been documented using the tool:
 
-[![Open Documentation on Postman](https://raw.githubusercontent.com/sandermendes/app-test/a1823009dc6d2cf8f417c8e578744dcf2068b866/assets/postman-doc-button.svg)](https://www.postman.com/sandercmendes/workspace/sander-workspace/documentation/18173115-24025273-6481-48fd-a015-8d6e40ab97a5)
+[![Open Documentation on Postman](https://raw.githubusercontent.com/sandermendes/app-test/a1823009dc6d2cf8f417c8e578744dcf2068b866/assets/postman-doc-button.svg)](https://www.postman.com/sandercmendes /workspace/sander-workspace/documentation/18173115-24025273-6481-48fd-a015-8d6e40ab97a5)
 
-## Teste
+## Test
 
-Implementado rotina de testes com o Cypress, tanto Back-end, tanto Front-end, que se localiza na raiz do projeto, na pasta: `cypress/integration`
-
+Implemented testing routine with Cypress, both Back-end and Front-end, which is located at the root of the project, in the folder: `cypress/integration`
