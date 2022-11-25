@@ -20,10 +20,10 @@ Simple interface to interact with the API, using:
 
 ## How to use
 
-[Download](https://github.com/sandermendes/app-test/archive/refs/heads/master.zip) or clone the repo:
+[Download](https://github.com/sandermendes/NextJs-Backend-Frontend/archive/refs/heads/master.zip) or clone the repo:
 
 ```sh
-git clone https://github.com/sandermendes/app-test.git
+git clone https://github.com/sandermendes/NextJs-Backend-Frontend.git
 ```
 
 Access the folder in question
